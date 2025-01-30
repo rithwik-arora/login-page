@@ -1,0 +1,148 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.container {
+  position: relative;
+  width: 400px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.form-container {
+  display: flex;
+  width: 200%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.container.active .form-container {
+  transform: translateX(-50%);
+}
+
+.form {
+  width: 50%;
+  padding: 40px;
+}
+
+.title {
+  font-size: 2em;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-bottom: 2px solid #ddd;
+  outline: none;
+  font-size: 1em;
+  transition: 0.3s all ease;
+}
+
+.input-group label {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  pointer-events: none;
+  transition: 0.3s all ease;
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label {
+  top: -5px;
+  font-size: 0.8em;
+  color: #3498db;
+}
+
+.input-group input:focus,
+.input-group input:valid {
+  border-color: #3498db;
+}
+
+.btn {
+  width: 100%;
+  padding: 15px;
+  background: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: 0.3s all ease;
+}
+
+.btn:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.toggle-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.toggle {
+  color: #3498db;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.toggle:hover {
+  text-decoration: underline;
+}
+
+.loader {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 90%;
+  }
+  .form {
+    padding: 30px;
+  }
+}
