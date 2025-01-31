@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
       loader.style.display = "none";
 
       if (response.ok) {
-        alert("Login successful!");
         window.location.href = "/newpage.html";
         // Redirect or handle success
       } else {
