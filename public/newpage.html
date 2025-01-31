@@ -1,11 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>New Page</title>
-  </head>
-  <body>
-    <h1>Welcome to the New Page!</h1>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --text-color: #1f2937;
+            --light-bg: #f3f4f6;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: var(--text-color);
+        }
+
+        .navbar {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .user-menu {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .user-avatar:hover {
+            transform: scale(1.05);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 1rem;
+            display: none;
+            min-width: 200px;
+        }
+
+        .dropdown-menu.active {
+            display: block;
+        }
+
+        .main-container {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            min-height: calc(100vh - 72px);
+        }
+
+        .sidebar {
+            background: white;
+            padding: 1.5rem;
+            border-right: 1px solid #e5e7eb;
+        }
+
+        .nav-item {
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .nav-item:hover {
+            background: var(--light-bg);
+        }
+
+        .nav-item.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .main-content {
+            padding: 2rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .card-header {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            flex: 1;
+            margin: 0 0.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Dashboard</div>
+        <div class="user-menu">
+            <div class="user-avatar" onclick="toggleDropdown()">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="dropdown-menu" id="dropdown">
+                <div class="nav-item"><i class="fas fa-user-circle"></i> Profile</div>
+                <div class="nav-item"><i class="fas fa-cog"></i> Settings</div>
+                <div class="nav-item"><i class="fas fa-sign-out-alt"></i> Logout</div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <a href="#" class="nav-item active"><i class="fas fa-home"></i> Home</a>
+            <a href="#" class="nav-item"><i class="fas fa-chart-bar"></i> Analytics</a>
+            <a href="#" class="nav-item"><i class="fas fa-envelope"></i> Messages</a>
+            <a href="#" class="nav-item"><i class="fas fa-users"></i> Team</a>
+            <a href="#" class="nav-item"><i class="fas fa-file"></i> Documents</a>
+        </aside>
+
+        <main class="main-content">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-value">1,234</div>
+                    <div class="stat-label">Active Users</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">89%</div>
+                    <div class="stat-label">Engagement</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">$12.3k</div>
+                    <div class="stat-label">Revenue</div>
+                </div>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h3 class="card-header">Recent Activity</h3>
+                    <p>New user registration</p>
+                    <p>System update completed</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-header">Quick Actions</h3>
+                    <button class="nav-item"><i class="fas fa-plus"></i> New Project</button>
+                    <button class="nav-item"><i class="fas fa-upload"></i> Upload Files</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdown');
+            dropdown.classList.toggle('active');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            const dropdown = document.getElementById('dropdown');
+            if (!e.target.closest('.user-menu')) {
+                dropdown.classList.remove('active');
+            }
+        });
+
+        // Add active class to clicked nav items
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
 </html>
