@@ -24,7 +24,7 @@ Ensure you have the following installed:
    ```
 2. **Install dependencies:**
    ```sh
-   npm install
+   npm install express sqlite3 body-parser
    ```
 3. **Run the server:**
    ```sh
